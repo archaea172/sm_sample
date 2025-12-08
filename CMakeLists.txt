@@ -15,10 +15,12 @@ find_package(ament_cmake REQUIRED)
 find_package(cl_ros2_timer REQUIRED)
 find_package(smacc2 REQUIRED)
 find_package(Boost COMPONENTS thread REQUIRED)
+find_package(lifecyclenode_client REQUIRED)
 
 set(THIS_PACKAGE_INCLUDE_DEPENDS
   cl_ros2_timer
   smacc2
+  lifecyclenode_client
 )
 
 include_directories(
