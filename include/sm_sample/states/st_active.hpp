@@ -14,7 +14,7 @@ using smacc2::default_transition_tags::SUCCESS;
 
 using sm_sample::OrLifecycleNodes;
 
-struct Active : smacc2::SmaccState<Active, SmSample>
+struct StActive : smacc2::SmaccState<StActive, SmSample>
 {
     using SmaccState::SmaccState;
 
