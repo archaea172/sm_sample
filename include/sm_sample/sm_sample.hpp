@@ -21,33 +21,33 @@
 #include "smacc2/smacc.hpp"
 
 // ORTHOGONALS
-
+#include "sm_sample/orthogonals/or_lifecycle_nodes.hpp"
+#include "sm_sample/orthogonals/or_joy_monitor.hpp"
 
 namespace sm_sample
 {
 // SMACC2 clases
-struct StActive;
 
 //STATES
+struct StActive;
 
 //--------------------------------------------------------------------
 //STATE_MACHINE
 struct SmSample
 : public smacc2::SmaccStateMachineBase<SmSample, StActive>
 {
-  using SmaccStateMachineBase::SmaccStateMachineBase;
+  	using SmaccStateMachineBase::SmaccStateMachineBase;
 
-  void onInitialize() override
-  {
-    // START: Example code - change or delete as needed
-
-    // Use Blackboard to store global state-machine data - example - feel free to delete it.
-    setGlobalSMData(
-      "output_message_note", std::string("{I am very cool smacc2 SM called 'sm_sample'}"));
-    // END: Example code - change or delete as needed
-  }
+    void onInitialize() override
+    {
+		this->createOrthogonal<OrLifecycleNodes>();
+		this->createOrthogonal<OrJoyMonitor>();
+		
+		setGlobalSMData(
+			"output_message_note", std::string("{I am very cool smacc2 SM called 'sm_sample'}"));
+    }
 };
 
 }  // namespace sm_sample
 
-//STATES
+#include "sm_sample/states/st_active.hpp"
