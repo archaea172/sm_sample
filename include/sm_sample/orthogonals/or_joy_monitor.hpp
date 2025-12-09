@@ -3,7 +3,7 @@
 #include <smacc2/smacc.hpp>
 #include "sm_sample/components/cp_joy_monitor.hpp"
 
-namespace sm_omni_teleop
+namespace sm_sample
 {
 
 struct OrJoyMonitor : smacc2::Orthogonal<OrJoyMonitor>

@@ -24,4 +24,4 @@ struct StCanError
   }
 };
 
-} // namespace sm_omni_teleop
+} // namespace sm_samples
