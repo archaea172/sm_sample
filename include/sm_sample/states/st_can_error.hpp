@@ -6,20 +6,20 @@
 
 namespace sm_sample
 {
-namespace mpl = boost::mpl;
 
+struct SmSample;
 struct StWaitConnections;
 
-struct EvReset : sc::event<EvReset> {};
+namespace mpl = boost::mpl;
 
 struct StCanError
   : smacc2::SmaccState<StCanError, SmSample>
 {
+  using Base = smacc2::SmaccState<StCanError, SmSample>;
+  using Base::SmaccState;
   using SmaccState::SmaccState;
 
-  using reactions = mpl::list<
-    smacc2::Transition<EvReset, StWaitConnections>
-  >;
+  using reactions = mpl::list<>;
 
   void onEntry()
   {

@@ -4,7 +4,7 @@
 #include <boost/mpl/list.hpp>
 
 
-#include "sm_sample/components/cl_joy_monitor.hpp"
+#include "sm_sample/clients/cl_joy_monitor.hpp"
 #include "sm_sample/states/st_active.hpp"
 
 namespace sm_sample
