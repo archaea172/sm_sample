@@ -11,6 +11,7 @@ namespace sm_sample
 {
 
 struct SmSample;  // 親ステートマシン
+struct StActive;
 
 namespace mpl = boost::mpl;
 

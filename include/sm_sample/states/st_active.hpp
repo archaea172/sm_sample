@@ -2,8 +2,8 @@
 
 #include <smacc2/smacc.hpp>
 #include <boost/mpl/list.hpp>
-
 #include <lifecyclenode_client/lifecyclenode_client.hpp>
+
 #include "sm_sample/clients/cl_joy_monitor.hpp"
 #include "sm_sample/orthogonals/or_lifecycle_nodes.hpp"
 #include "sm_sample/states/st_wait_connections.hpp"
@@ -14,16 +14,17 @@ namespace sm_sample
 
 struct SmSample;
 namespace mpl = boost::mpl;
+
 using cl_lifecyclenode::ClLifecycleNode;
 using cl_lifecyclenode::EvTransitionOnDeactivateSuccess;
 
 using EvCanDeactivated =
   EvTransitionOnDeactivateSuccess<ClLifecycleNode, OrLifecycleNodes>;
 
-struct StTeleopActive
+struct StActive
   : smacc2::SmaccState<StActive, SmSample>
 {
-  using Base = smacc2::SmaccState<StTeleopActive, SmSample>;
+  using Base = smacc2::SmaccState<StActive, SmSample>;
   using Base::SmaccState;
 
   using reactions = mpl::list<
