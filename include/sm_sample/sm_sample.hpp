@@ -21,28 +21,26 @@
 #include "smacc2/smacc.hpp"
 
 // ORTHOGONALS
-#include "sm_sample/orthogonals/or_timer.hpp"
+
 
 namespace sm_sample
 {
 // SMACC2 clases
-using sm_sample::OrTimer;  // This is example variable - feel free to delete it.
+struct StActive;
 
 //STATES
-struct State1;
-struct State2;
 
 //--------------------------------------------------------------------
 //STATE_MACHINE
 struct SmSample
-: public smacc2::SmaccStateMachineBase<SmSample, State1>
+: public smacc2::SmaccStateMachineBase<SmSample, StActive>
 {
   using SmaccStateMachineBase::SmaccStateMachineBase;
 
   void onInitialize() override
   {
     // START: Example code - change or delete as needed
-    this->createOrthogonal<OrTimer>();
+
     // Use Blackboard to store global state-machine data - example - feel free to delete it.
     setGlobalSMData(
       "output_message_note", std::string("{I am very cool smacc2 SM called 'sm_sample'}"));
@@ -53,5 +51,3 @@ struct SmSample
 }  // namespace sm_sample
 
 //STATES
-#include "states/st_state_1.hpp"
-#include "states/st_state_2.hpp"
