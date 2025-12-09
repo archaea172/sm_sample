@@ -3,7 +3,7 @@
 #include <smacc2/smacc.hpp>
 #include <sr_all_events_go/sr_all_events_go.hpp>
 #include <lifecyclenode_client/lifecyclenode_client.hpp>
-#include "sm_sample/components/cp_joy_monitor.hpp"
+#include "sm_sample/clients/cl_joy_monitor.hpp"
 
 #include <boost/mpl/list.hpp>
 
@@ -20,7 +20,7 @@ struct StTeleopActive;
 namespace mpl = boost::mpl;
 
 struct StWaitConnections
-  : smacc2::SmaccState<StWaitConnections, SmOmniTeleop>
+  : smacc2::SmaccState<StWaitConnections, SmSample>
 {
   using SmaccState::SmaccState;
 

@@ -50,4 +50,5 @@ struct SmSample
 
 }  // namespace sm_sample
 
+#include "sm_sample/states/st_wait_connections.hpp"
 #include "sm_sample/states/st_system_startup.hpp"
