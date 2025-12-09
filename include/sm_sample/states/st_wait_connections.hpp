@@ -3,6 +3,10 @@
 #include <smacc2/smacc.hpp>
 #include <boost/mpl/list.hpp>
 
+
+#include "sm_sample/components/cl_joy_monitor.hpp"
+#include "sm_sample/states/st_active.hpp"
+
 namespace sm_sample
 {
 
@@ -20,7 +24,9 @@ struct StWaitConnections
   using Base::SmaccState;
 
   // まだ遷移は何も定義しない（あとで足す）
-  using reactions = mpl::list<>;
+  using reactions = mpl::list<
+    smacc2::Transition<EvControllerConnected, StTeleopActive>
+  >;
 
   void onEntry()
   {
