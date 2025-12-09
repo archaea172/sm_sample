@@ -1,55 +1,34 @@
 #pragma once
 
 #include <smacc2/smacc.hpp>
-#include <lifecyclenode_client/lifecyclenode_client.hpp>
-#include "sm_sample/components/cp_joy_monitor.hpp"
-#include "sm_sample/orthogonals/or_lifecycle_nodes.hpp"
-
 #include <boost/mpl/list.hpp>
 
 namespace sm_sample
 {
+
+struct SmSample;
 namespace mpl = boost::mpl;
 
-using cl_lifecyclenode::ClLifecycleNode;
-using cl_lifecyclenode::EvTransitionOnDeactivateSuccess;
-
-struct StWaitConnections;
-struct StCanError;
-
+//-----------------------------------------------
+//  StTeleopActive （とりあえずログだけ）
+//-----------------------------------------------
 struct StTeleopActive
   : smacc2::SmaccState<StTeleopActive, SmSample>
 {
-  using SmaccState::SmaccState;
+  using Base = smacc2::SmaccState<StTeleopActive, SmSample>;
+  using Base::SmaccState;
 
-  using EvCanDeactivated =
-    EvTransitionOnDeactivateSuccess<ClLifecycleNode, OrLifecycleNodes>;
-
-  using reactions = mpl::list<
-    smacc2::Transition<EvControllerDisconnected, StWaitConnections>,
-    smacc2::Transition<EvCanDeactivated, StCanError>
-  >;
+  using reactions = mpl::list<>;  // まだ遷移なし
 
   void onEntry()
   {
-    RCLCPP_INFO(getLogger(), "StTeleopActive: ENTRY (activate lifecycle nodes)");
-
-    ClLifecycleNode * lcJoy2Twist;
-    ClLifecycleNode * lcCan;
-    this->requiresClient(lcJoy2Twist);
-    this->requiresClient(lcCan);
-
-    lcJoy2Twist->activate();
-    lcCan->activate();
+    RCLCPP_INFO(this->getLogger(), "StTeleopActive: entry (Joy connected)");
   }
 
   void onExit()
   {
-    RCLCPP_INFO(getLogger(), "StTeleopActive: EXIT (deactivate joy2twist)");
-    ClLifecycleNode * lcJoy2Twist;
-    this->requiresClient(lcJoy2Twist);
-    lcJoy2Twist->deactivate();
+    RCLCPP_INFO(this->getLogger(), "StTeleopActive: exit");
   }
 };
 
-} // namespace sm_sample
+}  // namespace sm_sample
