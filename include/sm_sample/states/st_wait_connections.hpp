@@ -25,7 +25,7 @@ struct StWaitConnections
 
   // まだ遷移は何も定義しない（あとで足す）
   using reactions = mpl::list<
-    smacc2::Transition<EvControllerConnected, StTeleopActive>
+    smacc2::Transition<EvControllerConnected, StActive>
   >;
 
   void onEntry()

@@ -8,7 +8,6 @@ namespace sm_sample
 {
 
 struct SmSample;
-struct StWaitConnections;
 
 namespace mpl = boost::mpl;
 
@@ -17,7 +16,6 @@ struct StCanError
 {
   using Base = smacc2::SmaccState<StCanError, SmSample>;
   using Base::SmaccState;
-  using SmaccState::SmaccState;
 
   using reactions = mpl::list<>;
 
