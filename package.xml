@@ -12,9 +12,12 @@
 
   <depend>libboost-thread-dev</depend>
 
-  <depend>ros_timer_client</depend>
   <depend>smacc2</depend>
   <depend>lifecyclenode_client</depend>
+  <depend>sr_all_events_go</depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
