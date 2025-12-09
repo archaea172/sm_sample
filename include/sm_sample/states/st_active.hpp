@@ -35,8 +35,8 @@ struct StActive
   {
     RCLCPP_INFO(this->getLogger(), "StActive: entry (activate lifecycle nodes)");
 
-    ClLifecycleNode * lcJoy2Twist;
-    ClLifecycleNode * lcCan;
+    ClJoy2Twist * lcJoy2Twist;
+    ClCanBridge * lcCan;
     this->requiresClient(lcJoy2Twist);
     this->requiresClient(lcCan);
 
