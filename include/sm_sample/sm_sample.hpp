@@ -29,12 +29,12 @@ namespace sm_sample
 // SMACC2 clases
 
 //STATES
-struct StActive;
+struct StSystemStartup;
 
 //--------------------------------------------------------------------
 //STATE_MACHINE
 struct SmSample
-: public smacc2::SmaccStateMachineBase<SmSample, StActive>
+: public smacc2::SmaccStateMachineBase<SmSample, StSystemStartup>
 {
   	using SmaccStateMachineBase::SmaccStateMachineBase;
 
@@ -50,4 +50,4 @@ struct SmSample
 
 }  // namespace sm_sample
 
-#include "sm_sample/states/st_active.hpp"
+#include "sm_sample/states/st_system_startup.hpp"
