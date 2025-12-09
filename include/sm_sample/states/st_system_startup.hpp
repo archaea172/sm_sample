@@ -1,26 +1,41 @@
 #pragma once
 
 #include <smacc2/smacc.hpp>
+#include <boost/mpl/list.hpp>
 
 namespace sm_sample
 {
+
+// 親ステートマシン & 次の状態を前方宣言
+struct SmSample;
 struct StWaitConnections;
 
-struct StSystemStartup
-  : smacc2::SmaccState<StSystemStartup, SmOmniTeleop>
-{
-  using SmaccState::SmaccState;
+// Boost.MPL のエイリアス
+namespace mpl = boost::mpl;
 
+// 「スタートアップが終わった」ことを表す自前イベント
+struct EvStartupDone : sc::event<EvStartupDone> {};
+
+//-----------------------------------------------
+//  StSystemStartup
+//-----------------------------------------------
+struct StSystemStartup
+  : smacc2::SmaccState<StSystemStartup, SmSample>
+{
+  using Base = smacc2::SmaccState<StSystemStartup, SmSample>;
+  using Base::SmaccState;
+
+  // このステートが受け付けるイベントと遷移
   using reactions = mpl::list<
-    smacc2::Transition<smacc2::EvStateFinish<StSystemStartup>, StWaitConnections>
+    smacc2::Transition<EvStartupDone, StWaitConnections>
   >;
 
   void onEntry()
   {
-    RCLCPP_INFO(getLogger(), "StSystemStartup: entry");
-    // 必要ならここで lifecycle configure などを行う
-    this->postEvent<smacc2::EvStateFinish<StSystemStartup>>();
+    RCLCPP_INFO(this->getLogger(), "StSystemStartup: entry");
+    // すぐに次のステートへ進みたいので、自分でイベントをポスト
+    this->postEvent<EvStartupDone>();
   }
 };
 
-} // namespace sm_sample
+}  // namespace sm_sample

@@ -5,6 +5,8 @@
 #include <lifecyclenode_client/lifecyclenode_client.hpp>
 #include "sm_sample/components/cp_joy_monitor.hpp"
 
+#include <boost/mpl/list.hpp>
+
 namespace sm_sample
 {
 
@@ -14,6 +16,8 @@ using cl_lifecyclenode::ClLifecycleNode;
 using cl_lifecyclenode::EvTransitionOnActivateSuccess;
 
 struct StTeleopActive;
+
+namespace mpl = boost::mpl;
 
 struct StWaitConnections
   : smacc2::SmaccState<StWaitConnections, SmOmniTeleop>

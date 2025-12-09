@@ -5,8 +5,11 @@
 #include "sm_sample/components/cp_joy_monitor.hpp"
 #include "sm_sample/orthogonals/or_lifecycle_nodes.hpp"
 
+#include <boost/mpl/list.hpp>
+
 namespace sm_sample
 {
+namespace mpl = boost::mpl;
 
 using cl_lifecyclenode::ClLifecycleNode;
 using cl_lifecyclenode::EvTransitionOnDeactivateSuccess;

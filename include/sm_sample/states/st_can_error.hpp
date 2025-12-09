@@ -2,8 +2,11 @@
 
 #include <smacc2/smacc.hpp>
 
+#include <boost/mpl/list.hpp>
+
 namespace sm_sample
 {
+namespace mpl = boost::mpl;
 
 struct StWaitConnections;
 
