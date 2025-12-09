@@ -9,7 +9,7 @@ struct OrLifecycleNodes : smacc2::Orthogonal<OrLifecycleNodes>
 {
     void onInitialize() override
     {
-        this->createClient<ClLifecycleNode>("joy2twist_node");
-        this->createClient<ClLifecycleNode>("twist2can_node");
+        this->createClient<ClLifecycleNode>("joy_vel_converter");
+        this->createClient<ClLifecycleNode>("test_canbridge");
     }
 };
