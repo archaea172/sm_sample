@@ -2,6 +2,9 @@
 
 #include <smacc2/smacc.hpp>
 #include <boost/mpl/list.hpp>
+#include <lifecyclenode_client/lifecyclenode_client.hpp>
+
+#include "sm_sample/orthogonals/or_lifecycle_nodes.hpp"
 
 namespace sm_sample
 {
