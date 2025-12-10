@@ -13,6 +13,8 @@ namespace sm_sample
 {
 
 struct SmSample;
+struct StWaitControllers;
+struct StCanError;
 namespace mpl = boost::mpl;
 
 using cl_lifecyclenode::ClLifecycleNode;
