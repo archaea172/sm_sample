@@ -6,14 +6,12 @@
 
 #include "sm_sample/clients/cl_joy_monitor.hpp"
 #include "sm_sample/orthogonals/or_lifecycle_nodes.hpp"
-#include "sm_sample/states/st_wait_connections.hpp"
-#include "sm_sample/states/st_can_error.hpp"
 
 namespace sm_sample
 {
 
 struct SmSample;
-struct StWaitControllers;
+struct StWaitConnections;
 struct StCanError;
 namespace mpl = boost::mpl;
 
@@ -35,29 +33,29 @@ struct StActive
 
   void onEntry()
   {
-    RCLCPP_INFO(this->getLogger(), "StActive: entry (activate lifecycle nodes)");
-
     ClJoy2Twist * lcJoy2Twist;
     ClCanBridge * lcCan;
     this->requiresClient(lcJoy2Twist);
     this->requiresClient(lcCan);
 
     lcJoy2Twist->configure();
-    lcCan->configure();
+    // lcCan->configure();
 
     lcJoy2Twist->activate();
-    lcCan->activate();
+    // lcCan->activate();
+    RCLCPP_INFO(this->getLogger(), "StActive: entry (activate lifecycle nodes)");
   }
 
   void onExit()
   {
     RCLCPP_INFO(this->getLogger(), "StActive: exit");
-    ClLifecycleNode * lcJoy2Twist;
-    ClLifecycleNode * lcCan;
+    ClJoy2Twist * lcJoy2Twist;
+    ClCanBridge * lcCan;
     this->requiresClient(lcJoy2Twist);
     this->requiresClient(lcCan);
 
     lcJoy2Twist->deactivate();
+    lcJoy2Twist->cleanup();
   }
 };
 
