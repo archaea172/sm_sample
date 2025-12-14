@@ -38,11 +38,8 @@ struct StActive
     this->requiresClient(lcJoy2Twist);
     this->requiresClient(lcCan);
 
-    lcJoy2Twist->configure();
-    // lcCan->configure();
-
     lcJoy2Twist->activate();
-    // lcCan->activate();
+    lcCan->activate();
     RCLCPP_INFO(this->getLogger(), "StActive: entry (activate lifecycle nodes)");
   }
 

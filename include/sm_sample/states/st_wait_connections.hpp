@@ -34,6 +34,13 @@ struct StWaitConnections
   void onEntry()
   {
     RCLCPP_INFO(this->getLogger(), "StWaitConnections: entry");
+    ClJoy2Twist * lcJoy2Twist;
+    ClCanBridge * lcCan;
+    this->requiresClient(lcJoy2Twist);
+    this->requiresClient(lcCan);
+
+    lcJoy2Twist->configure();
+    lcCan->configure();
   }
 };
 
