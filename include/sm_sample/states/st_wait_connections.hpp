@@ -42,6 +42,11 @@ struct StWaitConnections
     lcCan->configure();
     RCLCPP_INFO(this->getLogger(), "StWaitConnections: entry");
   }
+
+  void onExit()
+  {
+    RCLCPP_INFO(this->getLogger(), "StWaitConnections: exit");
+  }
 };
 
 }  // namespace sm_sample
